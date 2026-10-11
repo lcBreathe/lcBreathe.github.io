@@ -85,7 +85,8 @@
           "label": "Code",
           "url": "https://github.com/Homy-Xu/MemTrace"
         }
-      ]
+      ],
+      "overview": "assets/images/papers/memtrace-overview.png"
     },
     {
       "id": "dial",
@@ -138,58 +139,35 @@
           "Agent self-repair: designed execution-driven debugging to retrieve constraints and make targeted repairs from actual execution feedback; used logical plans to prevent semantic drift, and continuously wrote validated experience back to the knowledge base.",
           "Evaluation: built the DS-NL2SQL benchmark with 2,218 test cases across 6 databases. Compared with the strongest standard baseline, improved average execution accuracy by 10.25% and dialect feature coverage by 15.77%."
         ]
-      }
-    },
-    {
-      "id": "autodialect",
-      "title": "AutoDialect: Automating SQL Dialect Rule Generation with LLMs",
-      "venue": "SIGMOD 2027",
-      "status": {
-        "zh": "在审",
-        "en": "Under review"
       },
-      "dates": "2026.04 — 2026.08",
-      "start": "2026-04",
-      "end": "2026-08",
-      "summary": {
-        "zh": "让 LLM Agent 从 SQL 样例中自动生成、验证并持续集成可复用的代码级规则，减少通用 Coding Agent 对单个样例的过拟合。",
-        "en": "An LLM-agent approach that automatically generates, validates, and continuously integrates reusable code-level rules from SQL examples, addressing overfitting to individual examples in general-purpose coding agents."
-      },
-      "metrics": [
-        {
-          "value": "+35.2%",
-          "label": {
-            "zh": "平均准确率提升",
-            "en": "Average accuracy gain"
-          }
-        },
-        {
-          "value": "360",
-          "label": {
-            "zh": "经过验证的代码级规则",
-            "en": "Validated code-level rules"
-          }
-        },
-        {
-          "value": "9",
-          "label": {
-            "zh": "SQL 方言",
-            "en": "SQL dialects"
-          }
-        }
+      "overview": "assets/images/papers/dial-overview.png",
+      "authors": [
+        "Xiang Zhang",
+        "Hongming Xu",
+        "Le Zhou",
+        "Wei Zhou",
+        "Xuanhe Zhou",
+        "Guoliang Li",
+        "Yuyu Luo",
+        "Changdong Liu",
+        "Guorun Chen",
+        "Jiang Liao",
+        "Fan Wu"
       ],
-      "details": {
-        "zh": [
-          "结构化 Agent 推理：设计 Shared-Tree 与 Context-Complete SQL Unit，定位复杂输入中的多个变换需求并构造结构完整的生成单元；通过结构对齐的 Validation Variants 提升跨样例泛化能力。",
-          "代码生成与记忆：将开放式 Explore–Edit–Test 重构为 Stage-Based Generation，结合 Validation Gate、Failure-Scoped Repair 与 Trajectory / Working / Cross-Task Memory，实现可验证的生成、自修复和跨任务经验复用。",
-          "实验：在两个真实工业项目及覆盖 9 种 SQL Dialect 的公开数据集上，相比现有方法和 Claude Code、Codex 等 Coding Agent，准确率平均提升 35.2%，生成 360 个经过验证的代码级规则。"
-        ],
-        "en": [
-          "Structured agent reasoning: designed Shared-Tree and Context-Complete SQL Units to locate multiple transformation needs in complex inputs and construct structurally complete generation units; improved cross-example generalization with structurally aligned validation variants.",
-          "Code generation and memory: replaced open-ended Explore–Edit–Test with stage-based generation, combining validation gates, failure-scoped repair, and trajectory / working / cross-task memory for verifiable generation, self-repair, and experience reuse across tasks.",
-          "Evaluation: on two real industrial projects and a public dataset covering 9 SQL dialects, improved average accuracy by 35.2% over existing methods and coding agents such as Claude Code and Codex, producing 360 validated code-level rules."
-        ]
-      }
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2603.07449"
+        },
+        {
+          "label": "PDF",
+          "url": "https://arxiv.org/pdf/2603.07449"
+        },
+        {
+          "label": "Code",
+          "url": "https://github.com/weAIDB/Dial"
+        }
+      ]
     }
   ],
   "projects": [
@@ -262,7 +240,8 @@
       "note": {
         "zh": "预计 2028 年 3 月毕业",
         "en": "Expected graduation: March 2028"
-      }
+      },
+      "logo": "assets/images/schools/sjtu.png"
     },
     {
       "school": {
@@ -277,7 +256,8 @@
       "note": {
         "zh": "同济大学优秀毕业生",
         "en": "Outstanding Graduate, Tongji University"
-      }
+      },
+      "logo": "assets/images/schools/tongji.png"
     }
   ],
   "awards": [

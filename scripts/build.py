@@ -30,15 +30,23 @@ def heading(id_, number, zh, en):
 def render(d):
     nav = [('about', '关于我', 'About'), ('research', '研究与论文', 'Research'), ('projects', '项目经历', 'Projects'), ('education', '教育背景', 'Education'), ('awards', '荣誉奖项', 'Awards')]
     parts = [f'''<a class="skip-link" href="#main">{tr('跳至正文', 'Skip to content')}</a>
-<div class="page"><main id="main">
-<section id="about">
-<div class="profile-heading">
-<h1>{tr('张翔', 'Xiang Zhang')}<small>{tr('Xiang Zhang', '张翔')}</small></h1>
+<div class="page">
+<header class="masthead"><a class="site-name" href="#about">Xiang Zhang</a>
+<nav class="nav" aria-label="Main navigation">{''.join(f'<a href="#{id_}">{tr(zh, en)}</a>' for id_, zh, en in nav)}</nav>
 <button id="language-toggle" class="language-button" type="button" aria-label="Switch to English"><span class="language-text">English</span></button>
-</div>
+</header>
+<div class="site-grid">
+<aside class="profile-sidebar" aria-label="Profile">
+<img class="avatar" src="assets/images/avatar.jpg" width="600" height="600" alt="Xiang Zhang">
+<div class="profile-info"><h1>{tr(d['name'])}</h1><p class="other-name">{tr('Xiang Zhang', '张翔')}</p>
+<p class="profile-role">{tr('计算机专业硕士研究生', "Master’s student in Computer Science")}</p>
+<p class="profile-school">{tr('上海交通大学', 'Shanghai Jiao Tong University')}</p>
+<ul class="profile-links"><li>{tr('中国 · 上海', 'Shanghai, China')}</li>
+<li><a href="mailto:{e(d['email'])}">{e(d['email'])}</a></li>
+<li><a href="https://github.com/{e(d['github'])}" target="_blank" rel="noopener noreferrer">GitHub · {e(d['github'])}</a></li></ul></div>
+</aside>
+<main id="main"><section id="about" class="about-section"><h2>{tr('关于我', 'About me')}</h2>
 <p class="intro">{tr(d['intro'])}</p>
-<p class="contact-links"><a href="mailto:{e(d['email'])}">{e(d['email'])}</a><span class="separator" aria-hidden="true">/</span><a href="https://github.com/{e(d['github'])}" target="_blank" rel="noopener noreferrer">GitHub</a></p>
-<nav class="nav" aria-label="Main navigation">{''.join(f'<a href="#{id_}">{tr(zh, en)}</a>' for id_, zh, en in nav if id_ != 'about')}</nav>
 </section>''', heading('research', '01', '研究与论文', 'Research & Publications')]
     for paper in d['research']:
         authors = ''
@@ -54,24 +62,26 @@ def render(d):
             values = ' · '.join(f'{tr(metric["label"])} {e(metric["value"])}' for metric in paper['metrics'])
             results = f'<p class="paper-results">{values}</p>'
         parts.append(f'''<article class="research-item" id="{e(paper['id'])}">
+<a class="paper-figure" href="{e(paper['overview'])}" target="_blank" rel="noopener noreferrer"><img src="{e(paper['overview'])}" alt="{e(paper['title'])} — overview" loading="lazy"></a>
+<div class="paper-content">
 <h3 class="paper-title">{title}</h3>{authors}
 <p class="paper-meta"><span class="venue">{e(paper['venue'])}</span><span class="status">{tr(paper['status'])}</span><span class="date">{e(paper['dates'])}</span></p>
 <p class="paper-summary">{tr(paper['summary'])}</p>
 {f'<div class="paper-links">{links}</div>' if links else ''}
 <details class="research-details"><summary>{tr('研究详情', 'Details')}</summary>{bullet_lists(paper['details'])}{results}</details>
-</article>''')
+</div></article>''')
     parts += ['</section>', heading('projects', '02', '项目经历', 'Projects')]
     for project in d['projects']:
         parts.append(f'''<article class="project-item"><div class="item-top"><h3 class="project-title">{tr(project['title'])}</h3><span class="date">{e(project['dates'])}</span></div>
 <p class="project-subtitle">{tr(project['subtitle'])}</p>
-{bullet_lists(project['details'])}</article>''')
+<details class="project-details"><summary>{tr('项目详情', 'Details')}</summary>{bullet_lists(project['details'])}</details></article>''')
     parts += ['</section>', heading('education', '03', '教育背景', 'Education')]
     for edu in d['education']:
-        parts.append(f'''<article class="education-item"><div class="item-top"><h3 class="education-title">{tr(edu['school'])}</h3><span class="date">{e(edu['dates'])}</span></div><p class="education-degree">{tr(edu['degree'])}</p><p class="education-note">{tr(edu['note'])}</p></article>''')
+        parts.append(f'''<article class="education-item"><img class="school-logo" src="{e(edu['logo'])}" alt="{e(edu['school']['en'])}" width="72" height="72" loading="lazy"><div class="education-content"><div class="item-top"><h3 class="education-title">{tr(edu['school'])}</h3><span class="date">{e(edu['dates'])}</span></div><p class="education-degree">{tr(edu['degree'])}</p><p class="education-note">{tr(edu['note'])}</p></div></article>''')
     parts += ['</section>', heading('awards', '04', '荣誉奖项', 'Honors & Awards'), '<ul class="award-list">' + ''.join(f'<li>{tr(award)}</li>' for award in d['awards']) + '</ul></section>']
     parts.append(f'''
 <noscript><p>{tr('启用 JavaScript 后可切换语言并显示访客统计。', 'Enable JavaScript to switch languages and display visitor statistics.')}</p></noscript>
-</main>
+</main></div>
 <footer class="site-footer"><div class="footer-inner"><span>© {d['updated'][:4]} Xiang Zhang</span>
 <div class="footer-stats"><span><span class="footer-counter-title" title="UV · Busuanzi · Estimated unique visitors">{tr('访问人数', 'Visitors')}</span> <span id="visitor-value" class="stat-value" aria-live="polite">{tr('加载中…', 'Loading…')}</span></span>
 <span>{tr('最近更新', 'Last updated')} <time class="stat-value" datetime="{e(d['updated'])}">{e(d['updated'])}</time></span></div></div></footer></div>

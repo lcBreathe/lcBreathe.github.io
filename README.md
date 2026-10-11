@@ -2,7 +2,7 @@
 
 基于 [Academic Pages](https://github.com/academicpages/academicpages.github.io) 官方 Jekyll 模板，定制响应式学术主页。
 
-采用简洁的单栏排版，参考 [Percy Liang](https://cs.stanford.edu/~pliang/) 与 [Jon Barron](https://jonbarron.info/) 主页的文字层级和论文列表形式。没有头像占位、数据卡片或装饰标签；实验细节可展开查看。
+参考 [Yi Duan 的学术主页](https://duanyi516.github.io/)：左侧为证件照与个人信息，右侧为简介、带 overview 图的论文列表、项目经历、教育背景与荣誉。手机上自然排列为单栏；研究和项目细节可展开查看。
 
 主页：https://lcbreathe.github.io/  
 仓库：https://github.com/lcBreathe/lcBreathe.github.io
@@ -13,7 +13,7 @@
 
 - `content/profile.json`：中英文履历、论文、实验数据与链接的唯一内容来源。
 - `assets/css/academic.css`：主页样式与手机布局。
-- `assets/js/academic.js`：语言切换、导航、复制与真实访客统计。
+- `assets/js/academic.js`：语言切换、导航与真实访客统计。
 - `_layouts/academic.html`：定制主页布局。保留官方模板的 `_layouts`、`_includes`、`_sass` 和资源，便于后续扩展。
 - `_config.yml`：域名、仓库、作者与 Jekyll 配置。
 
@@ -36,6 +36,12 @@ GitHub Actions 从履历、样式、布局或构建脚本 最近一次 Git 提�
 
 ## 内容来源
 
-履历依据用户提供的 `resume(9).pdf`，英文为对应翻译。公开页面和仓库不包含手机号、微信号，不提供 PDF 或简历下载。Dial 的 PVLDB 2026、AutoDialect 的 SIGMOD 2027 在审状态与实验数据按简历保留；没有虚构论文链接、导师或第一作者身份。MemTrace 按用户补充标注为 ICLR 在审；标题、完整作者列表和指标依据 [arXiv:2610.04838](https://arxiv.org/abs/2610.04838)，附论文、PDF 与官方代码链接；pp 表示百分点。
+履历依据用户提供的 `resume(9).pdf`，英文为对应翻译。公开页面和仓库不包含手机号、微信号，不提供简历 PDF 或简历下载。AutoDialect 按用户要求暂不展示。Dial 的 PVLDB 2026 与实验数据按简历保留，作者、论文及代码链接依据 [arXiv:2603.07449](https://arxiv.org/abs/2603.07449)；没有虚构导师信息。MemTrace 按用户补充标注为 ICLR 在审；标题、完整作者列表和指标依据 [arXiv:2610.04838](https://arxiv.org/abs/2610.04838)，附论文、PDF 与官方代码链接；pp 表示百分点。
+
+头像为用户提供的证件照，保留原图并用 CSS 显示为圆形。两篇论文的 overview 使用论文原图，点击可查看完整大小：
+
+- [MemTrace 图 2](https://arxiv.org/html/2610.04838v2/overview.png)。
+- [Dial 图 2](https://arxiv.org/html/2603.07449v2/Framework.png)。
+- 校徽来自[上海交通大学视觉形象识别系统](https://vi.sjtu.edu.cn/index.php/articles/bulletin/13)与[同济大学信息公开网](https://xxgk.tongji.edu.cn/index.php?classid=3080&newsid=6829&t=show)。
 
 Academic Pages / Minimal Mistakes 的许可证保留于 `LICENSE`，原模板说明保留于 `upstream/AcademicPages-README.md`。
