@@ -3,7 +3,7 @@ _site/
 .sass-cache/
 dist/
 .bundle/
-vendor/
+/vendor/
 .openai/
 Gemfile.lock
 __pycache__/
