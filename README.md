@@ -2,8 +2,6 @@
 
 基于 [Academic Pages](https://github.com/academicpages/academicpages.github.io) 官方 Jekyll 模板，定制响应式学术主页。
 
-参考 [Yi Duan 的学术主页](https://duanyi516.github.io/)：左侧为证件照与个人信息，右侧为简介、带 overview 图的论文列表、项目经历、个人经历。论文使用放大的左图右文排版，图上注明 arXiv 或会议名称，标题链接至对应论文页；MemTrace 保留 arXiv，Dial 使用 [PVLDB 正式发表页](https://doi.org/10.14778/3836663.3836720)，另保留带 GitHub 图标的 Code 按钮。手机上自然排列为单栏；研究与项目内容直接展示，用少量加粗标出关键方法和实验结果。论文条目间使用留白，不加横线；项目仅保留 Agentic Memory，以加粗标题与左侧细线突出项目层级。
-
 主页：https://lcbreathe.github.io/  
 仓库：https://github.com/lcBreathe/lcBreathe.github.io
 
