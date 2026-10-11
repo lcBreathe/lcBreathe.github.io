@@ -2,6 +2,8 @@
 
 基于 [Academic Pages](https://github.com/academicpages/academicpages.github.io) 官方 Jekyll 模板，定制响应式学术主页。
 
+采用简洁的单栏排版，参考 [Percy Liang](https://cs.stanford.edu/~pliang/) 与 [Jon Barron](https://jonbarron.info/) 主页的文字层级和论文列表形式。没有头像占位、数据卡片或装饰标签；实验细节可展开查看。
+
 主页：https://lcbreathe.github.io/  
 仓库：https://github.com/lcBreathe/lcBreathe.github.io
 
