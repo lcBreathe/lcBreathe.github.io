@@ -8,4 +8,4 @@ If a user has created a personal website, there is **no need** to create a pull 
 
 ## This homepage
 
-The public website and repository must not contain the owner's phone number, WeChat ID, or original résumé PDF. Do not add résumé downloads. Keep the bilingual switch, visitor count, and last content-update date. MemTrace is marked ICLR under review; AutoDialect must not be displayed on the homepage.
+The public website and repository must not contain the owner's phone number, WeChat ID, or original résumé PDF. Do not add résumé downloads. Keep the bilingual switch, visitor count, and last content-update date. MemTrace is displayed as arXiv (no ICLR review status); Dial links to its official PVLDB publication at https://doi.org/10.14778/3836663.3836720; AutoDialect must not be displayed on the homepage.

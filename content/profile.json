@@ -19,10 +19,10 @@
     {
       "id": "memtrace",
       "title": "MemTrace: State-Consistent Memory for Long-Horizon Coding Agents",
-      "venue": "ICLR",
+      "venue": "arXiv",
       "status": {
-        "zh": "在审",
-        "en": "Under review"
+        "zh": "",
+        "en": ""
       },
       "dates": "2026.10",
       "start": "2026-10",
@@ -59,8 +59,8 @@
         ]
       },
       "badge": {
-        "zh": "ICLR · 在审",
-        "en": "ICLR · Under review"
+        "zh": "arXiv",
+        "en": "arXiv"
       }
     },
     {
@@ -90,8 +90,8 @@
       ],
       "links": [
         {
-          "label": "arXiv",
-          "url": "https://arxiv.org/abs/2603.07449"
+          "label": "VLDB",
+          "url": "https://doi.org/10.14778/3836663.3836720"
         },
         {
           "label": "Code",
