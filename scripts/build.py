@@ -59,7 +59,7 @@ def heading(id_, number, zh, en):
 
 
 def render(d):
-    nav = [('about', '关于我', 'About'), ('research', '研究与论文', 'Publications'), ('projects', '项目经历', 'Projects'), ('education', '个人经历', 'Experience')]
+    nav = [('about', '关于我', 'About'), ('research', '研究与论文', 'Publications'), ('projects', '项目经历', 'Projects'), ('demo', 'Demo', 'Demo'), ('education', '个人经历', 'Experience')]
     parts = [f'''<a class="skip-link" href="#main">{tr('跳至正文', 'Skip to content')}</a>
 <div class="page">
 <header class="masthead"><a class="site-name" href="#about">Xiang Zhang</a>
@@ -106,7 +106,11 @@ def render(d):
         parts.append(f'''<article class="project-item"><div class="item-top"><h3 class="project-title">{tr(project['title'])}</h3><span class="date">{e(project['dates'])}</span></div>
 <p class="project-subtitle">{tr(project['subtitle'])}</p>
 {paragraphs(project['details'])}</article>''')
-    parts += ['</section>', heading('education', '03', '个人经历', 'Experience')]
+    parts += ['</section>', heading('demo', '03', 'Demo', 'Demo')]
+    parts.append(f'''<article class="project-item"><h3 class="project-title"><a href="https://lcbreathe.github.io/ai-digest/" target="_blank" rel="noopener noreferrer">{tr('AI 技术日报', 'AI Daily Digest')}</a></h3>
+<p class="project-subtitle">{tr('技术进展、作者观点与实践经验，附原始来源。', 'Technical developments, practitioner perspectives, and hands-on learning, with original sources.')}</p>
+<p><a href="https://lcbreathe.github.io/ai-digest/" target="_blank" rel="noopener noreferrer">{tr('阅读最新一期 ↗', 'Read the latest issue ↗')}</a> · <a href="https://lcbreathe.github.io/ai-digest/archive.html" target="_blank" rel="noopener noreferrer">{tr('历史日历', 'Browse the calendar')}</a></p></article>''')
+    parts += ['</section>', heading('education', '04', '个人经历', 'Experience')]
     for edu in d['education']:
         affiliation = ''
         if edu.get('advisor'):
