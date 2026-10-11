@@ -14,7 +14,7 @@
   function updateVisitor() {
     visitorValue.textContent = visitorCount === null ? translations[language()][visitorState] : new Intl.NumberFormat(language() === 'en' ? 'en-US' : 'zh-CN').format(visitorCount);
   }
-  function setLanguage(lang, updateURL) {
+  function setLanguage(lang) {
     root.lang = lang === 'en' ? 'en' : 'zh-CN';
     document.title = translations[language()].title;
     languageButton.querySelector('.language-text').textContent = translations[language()].toggle;
@@ -22,18 +22,18 @@
     var accountButton = document.querySelector('.copy-account');
     if (accountButton) accountButton.setAttribute('aria-label', language() === 'en' ? 'Copy Xiaohongshu ID' : '复制小红书号');
     document.querySelector('meta[name="description"]').content = language() === 'en' ? 'Xiang Zhang, master\'s student in Computer Science at Shanghai Jiao Tong University. Research in LLM Agents, Agentic Memory, and Data-Centric AI.' : '张翔，上海交通大学计算机专业硕士研究生。研究兴趣：LLM Agents、Agentic Memory、Data-Centric AI。';
-    if (updateURL) {
-      try { localStorage.setItem('academic-language-v2', language()); } catch (_) {}
-      try { var url = new URL(location.href); url.searchParams.set('lang', language()); history.replaceState(null, '', url); } catch (_) {}
-    }
     updateVisitor();
   }
-  var selected = new URLSearchParams(location.search).get('lang');
-  if (selected !== 'en' && selected !== 'zh') {
-    try { selected = localStorage.getItem('academic-language-v2'); } catch (_) {}
-  }
-  setLanguage(selected === 'zh' ? 'zh' : 'en', false);
-  languageButton.addEventListener('click', function () { setLanguage(language() === 'en' ? 'zh' : 'en', true); });
+  // Each page load starts in English; switching applies only to this open page.
+  try {
+    var currentURL = new URL(location.href);
+    if (currentURL.searchParams.has('lang')) {
+      currentURL.searchParams.delete('lang');
+      history.replaceState(null, '', currentURL);
+    }
+  } catch (_) {}
+  setLanguage('en');
+  languageButton.addEventListener('click', function () { setLanguage(language() === 'en' ? 'zh' : 'en'); });
   // Shorten only when needed, keeping the owner and the original author order.
   function fitAuthors(element) {
     var names = JSON.parse(element.getAttribute('data-authors'));

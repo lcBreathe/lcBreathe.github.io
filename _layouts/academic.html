@@ -12,15 +12,8 @@
   <title>Xiang Zhang | Academic Homepage</title>
   <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}/">
   <link rel="icon" href="{{ '/assets/images/academic-mark.svg' | relative_url }}?v=2" type="image/svg+xml">
-  <link rel="stylesheet" href="{{ '/assets/css/academic.css' | relative_url }}">
-  <script>
-    try {
-      var preferredLanguage = new URLSearchParams(location.search).get('lang');
-      if (preferredLanguage !== 'en' && preferredLanguage !== 'zh') preferredLanguage = localStorage.getItem('academic-language-v2');
-      if (preferredLanguage === 'zh') document.documentElement.lang = 'zh-CN';
-    } catch (_) {}
-  </script>
-  <script defer src="{{ '/assets/js/academic.js' | relative_url }}"></script>
+  <link rel="stylesheet" href="{{ '/assets/css/academic.css' | relative_url }}?v=20261011-english">
+  <script defer src="{{ '/assets/js/academic.js' | relative_url }}?v=20261011-english"></script>
 </head>
 <body>
 {{ content }}

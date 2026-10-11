@@ -9,3 +9,5 @@ If a user has created a personal website, there is **no need** to create a pull 
 ## This homepage
 
 The public website and repository must not contain the owner's phone number, WeChat ID, or original résumé PDF. Do not add résumé downloads. Keep the bilingual switch, visitor count, and last content-update date. MemTrace is displayed as arXiv (no ICLR review status); Dial links to its official PVLDB publication at https://doi.org/10.14778/3836663.3836720; AutoDialect must not be displayed on the homepage.
+
+Default to English on every page load, regardless of stored preferences or legacy language query parameters. The language toggle applies to the current page only. Keep Graph Data Mining off the homepage. Do not add horizontal rules between papers.

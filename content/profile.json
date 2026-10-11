@@ -140,32 +140,6 @@
           "Established a shared comparison framework covering retrieval, dynamic updates, long-horizon stability, and cost; identified open questions in incremental updates, conflict resolution, selective forgetting, and memory-to-action."
         ]
       }
-    },
-    {
-      "title": {
-        "zh": "Graph Data Mining",
-        "en": "Graph Data Mining"
-      },
-      "subtitle": {
-        "zh": "大规模图学习与 GNN–LLM 融合",
-        "en": "Large-scale graph learning and GNN–LLM fusion"
-      },
-      "dates": "2025.10 — 2026.01",
-      "tags": [
-        "PyTorch / PyG",
-        "GraphSAGE",
-        "LoRA"
-      ],
-      "details": {
-        "zh": [
-          "基于 PyTorch / PyG 实现 GCN、GAT、GraphSAGE 和 SGC，在 Cora、Citeseer 上开展节点分类和消融实验，比较 Message Passing、Attention 与 Neighbor Aggregation 的效果。将实验扩展到 ogbn-products（**245 万余节点、6,186 万余边**），用 GraphSAGE Neighbor Sampling 实现 Mini-Batch 训练，降低显存和计算开销。",
-          "引入 BiGTex Graph-Text Fusion 与 LoRA，将图结构与 LLM 文本语义表示结合，在 ogbn-products 上取得所比较模型中的最佳测试效果。"
-        ],
-        "en": [
-          "Implemented GCN, GAT, GraphSAGE, and SGC in PyTorch / PyG, with node-classification experiments and ablations on Cora and Citeseer to compare message passing, attention, and neighbor aggregation. Extended experiments to ogbn-products (**over 2.45 million nodes and 61.86 million edges**), using GraphSAGE neighbor sampling for mini-batch training to reduce memory and computation costs.",
-          "Combined graph structure and LLM text representations using BiGTex graph-text fusion with LoRA, achieving the best test performance among the compared models on ogbn-products."
-        ]
-      }
     }
   ],
   "education": [
