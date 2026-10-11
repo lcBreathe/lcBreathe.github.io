@@ -59,7 +59,7 @@ def heading(id_, number, zh, en):
 
 
 def render(d):
-    nav = [('about', '关于我', 'About'), ('research', '研究与论文', 'Publications'), ('projects', '项目经历', 'Projects'), ('demo', 'Demo', 'Demo'), ('education', '个人经历', 'Experience')]
+    nav = [('about', '关于我', 'About'), ('research', '研究与论文', 'Publications'), ('projects', '项目经历', 'Projects'), ('demo', '项目演示', 'Demo'), ('education', '个人经历', 'Experience')]
     parts = [f'''<a class="skip-link" href="#main">{tr('跳至正文', 'Skip to content')}</a>
 <div class="page">
 <header class="masthead"><a class="site-name" href="#about">Xiang Zhang</a>
@@ -106,14 +106,11 @@ def render(d):
         parts.append(f'''<article class="project-item"><div class="item-top"><h3 class="project-title">{tr(project['title'])}</h3><span class="date">{e(project['dates'])}</span></div>
 <p class="project-subtitle">{tr(project['subtitle'])}</p>
 {paragraphs(project['details'])}</article>''')
-    parts += ['</section>', heading('demo', '03', 'Demo', 'Demo')]
-    parts.append(f'''<article class="digest-demo"><div class="demo-heading"><h3 class="project-title"><a href="https://lcbreathe.github.io/ai-digest/" target="_blank" rel="noopener noreferrer">{tr('AI 技术日报', 'AI Daily Digest')}</a></h3><span class="demo-tag">Agent · ML · Model</span></div>
-<p class="demo-intro">{tr('一个面向研究与技术实践的 AI 阅读项目。选材来自官方技术报告、开发者博客和社区讨论；产品发布与热度消息简短列举，把更多篇幅留给方法、实验条件、具体评价和使用痛点。', 'An AI reading project for research and technical practice. It draws on technical reports, developer blogs, and community discussions. Launches and trending news stay brief; methods, experimental conditions, concrete opinions, and practical frustrations receive more space.')}</p>
-<dl class="demo-features"><div><dt>{tr('从线索追到原文', 'Follow the source')}</dt><dd>{tr('编辑流程从聚合推送回到论文、报告、项目或作者原帖，再寻找实测与不同评价。来源链接和评分依据保留在正文中，方便复查。', 'The editorial workflow follows aggregated leads to papers, reports, projects, or original posts, then looks for tests and other perspectives. Source links and rating explanations remain available for inspection.')}</dd></div>
-<div><dt>{tr('事件合并，观点分开', 'One event, distinct voices')}</dt><dd>{tr('同一事件的重复报道合并，不同作者的判断与经历分别保留。事实概括、作者表达和编辑评读分开；外语短引文可逐句切换中文与原文。', 'Duplicate coverage is grouped by event without merging different authors’ judgments or experiences. Factual summaries, attributed views, and editorial analysis stay separate; translated excerpts can be toggled sentence by sentence.')}</dd></div>
-<div><dt>{tr('评价技术，也留下练习', 'Assess it, then try it')}</dt><dd>{tr('可信度、重要性、新颖度分别展示。技能学习栏目挑选项目经验和技术实践博客或视频，给出适用背景与练习建议；视频只依据元数据推荐。', 'Credibility, importance, and novelty are shown separately. A learning section selects practical blogs or videos, with prerequisites and suggested exercises. Video recommendations use metadata only.')}</dd></div>
-<div><dt>{tr('按天读，也能回头查', 'Read daily, revisit later')}</dt><dd>{tr('资讯类型与技术主题分别筛选，历史日历保留每一期。后台资料逐渐积累为可检索、相互关联的 Obsidian 知识库，便于追踪一个问题后来的进展。', 'Browse by information type or technical topic, and revisit any issue through the calendar. Behind the site, sources accumulate in a searchable, linked Obsidian knowledge base to help track how a question develops.')}</dd></div></dl>
-<div class="demo-links"><a class="demo-primary" href="https://lcbreathe.github.io/ai-digest/" target="_blank" rel="noopener noreferrer">{tr('阅读最新一期 ↗', 'Read the latest issue ↗')}</a><a href="https://lcbreathe.github.io/ai-digest/archive.html" target="_blank" rel="noopener noreferrer">{tr('浏览历史日历', 'Browse the calendar')}</a></div></article>''')
+    parts += ['</section>', heading('demo', '03', '项目演示', 'Demo')]
+    parts.append(f'''<article class="project-item"><h3 class="project-title"><a href="https://lcbreathe.github.io/ai-digest/" target="_blank" rel="noopener noreferrer">{tr('AI 技术日报', 'AI Daily Digest')}</a></h3>
+<p class="project-subtitle">{tr('社媒观点 · 技术讨论 · 实践经验', 'Community perspectives · Technical discussions · Hands-on experience')}</p>
+<p class="description">{tr('把更多篇幅留给 X、Reddit 和技术博客里的评价、争论与使用经验。同一事件保留不同人的说法，回到原始材料核对，再补充分析；产品发布和热度消息只作简讯。', 'An AI digest with more space for opinions, debates, and hands-on experience from X, Reddit, and technical blogs. It preserves different takes on the same event and checks claims against original sources before adding analysis. Launches and trending news stay brief.')}</p>
+<p class="links"><a href="https://lcbreathe.github.io/ai-digest/" target="_blank" rel="noopener noreferrer">{tr('阅读日报 ↗', 'Read the digest ↗')}</a> · <a href="https://lcbreathe.github.io/ai-digest/archive.html" target="_blank" rel="noopener noreferrer">{tr('历史日历', 'Past issues')}</a></p></article>''')
     parts += ['</section>', heading('education', '04', '个人经历', 'Experience')]
     for edu in d['education']:
         affiliation = ''
