@@ -1,0 +1,305 @@
+{
+  "updated": "2026-10-11",
+  "name": {
+    "zh": "张翔",
+    "en": "Xiang Zhang"
+  },
+  "email": "zhangxxx@sjtu.edu.cn",
+  "github": "lcBreathe",
+  "intro": {
+    "zh": "我目前是上海交通大学计算机专业硕士研究生，预计于 2028 年 3 月毕业。本科毕业于同济大学土木信息工程专业。我的研究兴趣是 LLM Agents、Agentic Memory 和 Data-Centric AI。",
+    "en": "I am a master's student in Computer Science at Shanghai Jiao Tong University, expecting to graduate in March 2028. I received my B.Eng. in Civil and Information Engineering from Tongji University. My research interests are LLM Agents, Agentic Memory, and Data-Centric AI."
+  },
+  "interests": [
+    "LLM Agents",
+    "Agentic Memory",
+    "Data-Centric AI"
+  ],
+  "research": [
+    {
+      "id": "memtrace",
+      "title": "MemTrace: State-Consistent Memory for Long-Horizon Coding Agents",
+      "venue": "ICLR",
+      "status": {
+        "zh": "在审",
+        "en": "Under review"
+      },
+      "dates": "2026.10",
+      "start": "2026-10",
+      "end": "2026-10",
+      "authors": [
+        "Hongming Xu",
+        "Le Zhou",
+        "ZhongHe Jin",
+        "Xiang Zhang",
+        "Bo Tang",
+        "Zhiyu Li",
+        "Xuanhe Zhou",
+        "Juncheng Zhang"
+      ],
+      "summary": {
+        "zh": "面向长程 Coding Agent，以不可变 Memory Traces 和 Memory Trace Graph 保留执行历史，并根据当前仓库状态校验历史证据，支持上下文刷新后的状态一致性恢复。",
+        "en": "A provenance-aware memory system for long-horizon coding agents. Immutable memory traces and a trace graph preserve execution history; state validation restores relevant evidence after context refreshes."
+      },
+      "metrics": [
+        {
+          "value": "+21.2 pp",
+          "label": {
+            "zh": "DeepSWE · pass@1",
+            "en": "DeepSWE · pass@1"
+          }
+        },
+        {
+          "value": "+4.4 pp",
+          "label": {
+            "zh": "SWE-EVO · Resolved Rate",
+            "en": "SWE-EVO · Resolved Rate"
+          }
+        },
+        {
+          "value": "+17.8 pp",
+          "label": {
+            "zh": "SWE-Milestone · Score",
+            "en": "SWE-Milestone · Score"
+          }
+        }
+      ],
+      "details": {
+        "zh": [
+          "在相同 backbone 和 harness 下评测三个长程编码基准；指标为 Codex CLI 下论文报告的提升，pp 表示百分点。"
+        ],
+        "en": [
+          "Reported gains under Codex CLI across three long-horizon coding benchmarks with the same backbone and harness; pp denotes percentage points."
+        ]
+      },
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2610.04838"
+        },
+        {
+          "label": "PDF",
+          "url": "https://arxiv.org/pdf/2610.04838"
+        },
+        {
+          "label": "Code",
+          "url": "https://github.com/Homy-Xu/MemTrace"
+        }
+      ]
+    },
+    {
+      "id": "dial",
+      "title": "Dial: A Knowledge-Grounded Dialect-Specific NL2SQL System",
+      "venue": "PVLDB 2026",
+      "status": {
+        "zh": "第一作者",
+        "en": "First author"
+      },
+      "dates": "2025.07 — 2026.03",
+      "start": "2025-07",
+      "end": "2026-03",
+      "summary": {
+        "zh": "针对跨数据库代码生成中的知识幻觉、方言干扰与不可执行问题，构建知识增强的闭环 Agent Workflow，在无需模型微调的情况下实现跨环境代码生成。",
+        "en": "A knowledge-grounded, closed-loop agent workflow for cross-database code generation that addresses knowledge hallucinations, dialect interference, and non-executable outputs without model fine-tuning."
+      },
+      "metrics": [
+        {
+          "value": "+10.25%",
+          "label": {
+            "zh": "执行准确率",
+            "en": "Execution accuracy"
+          }
+        },
+        {
+          "value": "+15.77%",
+          "label": {
+            "zh": "方言特征覆盖率",
+            "en": "Dialect feature coverage"
+          }
+        },
+        {
+          "value": "2,218",
+          "label": {
+            "zh": "测试样例 · 6 个数据库",
+            "en": "Test cases · 6 databases"
+          }
+        }
+      ],
+      "details": {
+        "zh": [
+          "闭环工作流：整合规划、检索、生成、执行反馈与语义校验，提升跨数据库生成的可执行性。",
+          "推理与知识增强：设计 NL-LQP，将自然语言需求分解为具有依赖关系的 DAG Macro-Operators；构建分层知识库 HINT-KB，从官方文档组织函数知识与隐式执行约束，提供面向意图的 Structured RAG。",
+          "Agent 自修复：设计 Execution-Driven Debugging，根据真实执行反馈检索约束并定向修复；以 Logical Plan 进行语义校验，避免 Semantic Drift，并将验证后的经验持续回写知识库。",
+          "实验：构建覆盖 6 个数据库、2,218 个测试样例的 DS-NL2SQL Benchmark；相比最强标准 Baseline，Execution Accuracy 平均提升 10.25%，Dialect Feature Coverage 平均提升 15.77%。"
+        ],
+        "en": [
+          "Closed-loop workflow: combines planning, retrieval, generation, execution feedback, and semantic validation to improve the executability of cross-database outputs.",
+          "Reasoning and knowledge grounding: designed NL-LQP to decompose natural-language requests into DAG macro-operators with dependencies, and HINT-KB to organize function knowledge and implicit execution constraints from official documentation for intent-oriented structured RAG.",
+          "Agent self-repair: designed execution-driven debugging to retrieve constraints and make targeted repairs from actual execution feedback; used logical plans to prevent semantic drift, and continuously wrote validated experience back to the knowledge base.",
+          "Evaluation: built the DS-NL2SQL benchmark with 2,218 test cases across 6 databases. Compared with the strongest standard baseline, improved average execution accuracy by 10.25% and dialect feature coverage by 15.77%."
+        ]
+      }
+    },
+    {
+      "id": "autodialect",
+      "title": "AutoDialect: Automating SQL Dialect Rule Generation with LLMs",
+      "venue": "SIGMOD 2027",
+      "status": {
+        "zh": "在审",
+        "en": "Under review"
+      },
+      "dates": "2026.04 — 2026.08",
+      "start": "2026-04",
+      "end": "2026-08",
+      "summary": {
+        "zh": "让 LLM Agent 从 SQL 样例中自动生成、验证并持续集成可复用的代码级规则，减少通用 Coding Agent 对单个样例的过拟合。",
+        "en": "An LLM-agent approach that automatically generates, validates, and continuously integrates reusable code-level rules from SQL examples, addressing overfitting to individual examples in general-purpose coding agents."
+      },
+      "metrics": [
+        {
+          "value": "+35.2%",
+          "label": {
+            "zh": "平均准确率提升",
+            "en": "Average accuracy gain"
+          }
+        },
+        {
+          "value": "360",
+          "label": {
+            "zh": "经过验证的代码级规则",
+            "en": "Validated code-level rules"
+          }
+        },
+        {
+          "value": "9",
+          "label": {
+            "zh": "SQL 方言",
+            "en": "SQL dialects"
+          }
+        }
+      ],
+      "details": {
+        "zh": [
+          "结构化 Agent 推理：设计 Shared-Tree 与 Context-Complete SQL Unit，定位复杂输入中的多个变换需求并构造结构完整的生成单元；通过结构对齐的 Validation Variants 提升跨样例泛化能力。",
+          "代码生成与记忆：将开放式 Explore–Edit–Test 重构为 Stage-Based Generation，结合 Validation Gate、Failure-Scoped Repair 与 Trajectory / Working / Cross-Task Memory，实现可验证的生成、自修复和跨任务经验复用。",
+          "实验：在两个真实工业项目及覆盖 9 种 SQL Dialect 的公开数据集上，相比现有方法和 Claude Code、Codex 等 Coding Agent，准确率平均提升 35.2%，生成 360 个经过验证的代码级规则。"
+        ],
+        "en": [
+          "Structured agent reasoning: designed Shared-Tree and Context-Complete SQL Units to locate multiple transformation needs in complex inputs and construct structurally complete generation units; improved cross-example generalization with structurally aligned validation variants.",
+          "Code generation and memory: replaced open-ended Explore–Edit–Test with stage-based generation, combining validation gates, failure-scoped repair, and trajectory / working / cross-task memory for verifiable generation, self-repair, and experience reuse across tasks.",
+          "Evaluation: on two real industrial projects and a public dataset covering 9 SQL dialects, improved average accuracy by 35.2% over existing methods and coding agents such as Claude Code and Codex, producing 360 validated code-level rules."
+        ]
+      }
+    }
+  ],
+  "projects": [
+    {
+      "title": {
+        "zh": "Agentic Memory",
+        "en": "Agentic Memory"
+      },
+      "subtitle": {
+        "zh": "面向长程 LLM Agent 的记忆系统调研与评测",
+        "en": "Survey and evaluation of memory systems for long-horizon LLM agents"
+      },
+      "dates": "2026.04 — 2026.08",
+      "tags": [
+        "Memory Systems",
+        "Data Management",
+        "Evaluation"
+      ],
+      "details": {
+        "zh": [
+          "体系化调研：针对上下文膨胀、历史检索与知识冲突，从 Data Management 视角将 Agent Memory 拆分为 Storage、Extraction、Retrieval、Maintenance，系统梳理 Vector、Structured、Knowledge Graph 与 Hybrid Memory 架构。",
+          "评测与总结：建立统一比较框架，从 Retrieval、Dynamic Update、Long-Horizon Stability 与 Cost 维度分析主流 Memory System，总结 Incremental Update、Conflict Resolution、Selective Forgetting 与 Memory-to-Action 等开放问题。"
+        ],
+        "en": [
+          "Systematic survey: examined context growth, history retrieval, and knowledge conflicts from a data-management perspective, decomposing agent memory into storage, extraction, retrieval, and maintenance; reviewed vector, structured, knowledge-graph, and hybrid architectures.",
+          "Evaluation and synthesis: established a unified comparison framework for retrieval, dynamic updates, long-horizon stability, and cost; identified open problems in incremental updates, conflict resolution, selective forgetting, and memory-to-action."
+        ]
+      }
+    },
+    {
+      "title": {
+        "zh": "Graph Data Mining",
+        "en": "Graph Data Mining"
+      },
+      "subtitle": {
+        "zh": "大规模图学习与 GNN–LLM 融合",
+        "en": "Large-scale graph learning and GNN–LLM fusion"
+      },
+      "dates": "2025.10 — 2026.01",
+      "tags": [
+        "PyTorch / PyG",
+        "GraphSAGE",
+        "LoRA"
+      ],
+      "details": {
+        "zh": [
+          "图学习建模：基于 PyTorch / PyG 实现 GCN、GAT、GraphSAGE、SGC，在 Cora、Citeseer 上完成节点分类与消融实验，分析 Message Passing、Attention 与 Neighbor Aggregation 的效果。",
+          "大规模训练：扩展至 ogbn-products（245 万余节点、6,186 万余边），采用 GraphSAGE Neighbor Sampling 实现 Mini-Batch 训练，降低显存与计算开销。",
+          "GNN–LLM 融合：引入 BiGTex Graph-Text Fusion + LoRA，联合建模图结构与 LLM 文本语义表示，在 ogbn-products 上取得所比较模型中的最佳测试效果。"
+        ],
+        "en": [
+          "Graph learning: implemented GCN, GAT, GraphSAGE, and SGC with PyTorch / PyG; conducted node classification and ablation studies on Cora and Citeseer to analyze message passing, attention, and neighbor aggregation.",
+          "Large-scale training: extended experiments to ogbn-products (over 2.45 million nodes and 61.86 million edges), using GraphSAGE neighbor sampling for mini-batch training to reduce memory and computation costs.",
+          "GNN–LLM fusion: introduced BiGTex graph-text fusion with LoRA to jointly model graph structure and LLM text semantics, achieving the best test performance among the compared models on ogbn-products."
+        ]
+      }
+    }
+  ],
+  "education": [
+    {
+      "school": {
+        "zh": "上海交通大学",
+        "en": "Shanghai Jiao Tong University"
+      },
+      "degree": {
+        "zh": "计算机专业 · 硕士研究生（在读）",
+        "en": "Computer Science · Master's student"
+      },
+      "dates": "2025.09 — 2028.03",
+      "note": {
+        "zh": "预计 2028 年 3 月毕业",
+        "en": "Expected graduation: March 2028"
+      }
+    },
+    {
+      "school": {
+        "zh": "同济大学",
+        "en": "Tongji University"
+      },
+      "degree": {
+        "zh": "土木信息工程 · 工学学士",
+        "en": "Civil and Information Engineering · B.Eng."
+      },
+      "dates": "2021.09 — 2025.06",
+      "note": {
+        "zh": "同济大学优秀毕业生",
+        "en": "Outstanding Graduate, Tongji University"
+      }
+    }
+  ],
+  "awards": [
+    {
+      "zh": "国家励志奖学金",
+      "en": "National Encouragement Scholarship"
+    },
+    {
+      "zh": "校级奖学金（2 次）",
+      "en": "University Scholarship (twice)"
+    },
+    {
+      "zh": "科技竞赛奖（2 次）",
+      "en": "Science and Technology Competition Awards (twice)"
+    },
+    {
+      "zh": "同济大学优秀学生",
+      "en": "Outstanding Student, Tongji University"
+    },
+    {
+      "zh": "同济大学优秀毕业生",
+      "en": "Outstanding Graduate, Tongji University"
+    }
+  ]
+}
