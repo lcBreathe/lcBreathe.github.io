@@ -77,7 +77,7 @@ def render(d):
 <li><a href="https://github.com/{e(d['github'])}" target="_blank" rel="noopener noreferrer">{icon('github')}GitHub</a></li>
 {''.join(f'<li><a href="{e(profile["url"])}" target="_blank" rel="noopener noreferrer">{icon(profile["icon"])}{e(profile["label"])}</a></li>' for profile in d.get('profiles', []))}
 <li class="xiaohongshu-row"><a href="{e(d['xiaohongshu']['search_url'])}" target="_blank" rel="noopener noreferrer" title="Xiaohongshu ID: {e(d['xiaohongshu']['id'])}">{icon('xiaohongshu')}{tr('小红书', 'Xiaohongshu')}</a><button class="copy-account" type="button" data-copy="{e(d['xiaohongshu']['id'])}" aria-label="复制小红书号" title="{e(d['xiaohongshu']['id'])}" hidden>{icon('copy')}</button><span class="copy-status" aria-live="polite"></span></li>
-<li><a href="{e(d['education'][0]['lab']['url'])}" target="_blank" rel="noopener noreferrer">{icon('lab')}Theseus Labs</a></li></ul></div>
+</ul></div>
 </aside>
 <main id="main"><section id="about" class="about-section"><h2>{tr('关于我', 'About me')}</h2>
 <p class="intro">{tr(d['intro'])}</p>
