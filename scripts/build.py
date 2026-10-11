@@ -108,8 +108,9 @@ def render(d):
 {paragraphs(project['details'])}</article>''')
     parts += ['</section>', heading('demo', '03', '项目演示', 'Demo')]
     parts.append(f'''<article class="project-item"><h3 class="project-title"><a href="https://lcbreathe.github.io/ai-digest/" target="_blank" rel="noopener noreferrer">{tr('AI 技术日报', 'AI Daily Digest')}</a></h3>
-<p class="project-subtitle">{tr('社媒观点 · 技术讨论 · 实践经验', 'Community perspectives · Technical discussions · Hands-on experience')}</p>
-<p class="description">{tr('把更多篇幅留给 X、Reddit 和技术博客里的评价、争论与使用经验。同一事件保留不同人的说法，回到原始材料核对，再补充分析；产品发布和热度消息只作简讯。', 'An AI digest with more space for opinions, debates, and hands-on experience from X, Reddit, and technical blogs. It preserves different takes on the same event and checks claims against original sources before adding analysis. Launches and trending news stay brief.')}</p>
+<p class="project-subtitle">{tr('社媒观点 · 技术实践 · 长期观察', 'Community perspectives · Technical practice · Ongoing analysis')}</p>
+<p class="description">{tr('把更多篇幅留给 X、Reddit 和技术博客里的评价、争论与实践经验。同一事件保留不同人的说法，回到原始材料核对；产品发布和热度消息只作简讯。', 'An AI digest focused on opinions, debates, and hands-on experience from X, Reddit, and technical blogs. Different takes on the same event are preserved and checked against original sources; launches and trending news stay brief.')}</p>
+<p class="description">{tr('编辑观察从知识库的旧线索出发，联系新材料提出判断，再把依据、反例和修正留下来。让每天的阅读接得上过去，也让自己的看法经得起回看。', 'Editorial analysis connects earlier knowledge-base entries with new evidence. Arguments, counterexamples, and revisions are kept for later review, so each issue builds on previous reading and earlier judgments remain open to correction.')}</p>
 <p class="links"><a href="https://lcbreathe.github.io/ai-digest/" target="_blank" rel="noopener noreferrer">{tr('阅读日报 ↗', 'Read the digest ↗')}</a> · <a href="https://lcbreathe.github.io/ai-digest/archive.html" target="_blank" rel="noopener noreferrer">{tr('历史日历', 'Past issues')}</a></p></article>''')
     parts += ['</section>', heading('education', '04', '个人经历', 'Experience')]
     for edu in d['education']:
