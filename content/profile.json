@@ -17,53 +17,6 @@
   ],
   "research": [
     {
-      "id": "memtrace",
-      "title": "MemTrace: State-Consistent Memory for Long-Horizon Coding Agents",
-      "venue": "arXiv",
-      "status": {
-        "zh": "",
-        "en": ""
-      },
-      "dates": "2026.10",
-      "start": "2026-10",
-      "end": "2026-10",
-      "authors": [
-        "Hongming Xu",
-        "Le Zhou",
-        "ZhongHe Jin",
-        "Xiang Zhang",
-        "Bo Tang",
-        "Zhiyu Li",
-        "Xuanhe Zhou",
-        "Juncheng Zhang"
-      ],
-      "links": [
-        {
-          "label": "arXiv",
-          "url": "https://arxiv.org/abs/2610.04838"
-        },
-        {
-          "label": "Code",
-          "url": "https://github.com/Homy-Xu/MemTrace"
-        }
-      ],
-      "overview": "assets/images/papers/memtrace-overview.png",
-      "description": {
-        "zh": [
-          "MemTrace 研究长程 Coding Agent 在上下文刷新后如何恢复记忆，同时保持记忆与当前代码状态一致。它用不可变的 **Memory Traces 和 Memory Trace Graph** 保留执行历史，再根据当前仓库状态校验历史证据，避免恢复已经失效的信息。",
-          "在相同 backbone 和 harness 下，论文报告 Codex CLI 在三个长程编码基准上的提升：DeepSWE pass@1 **+21.2 个百分点**，SWE-EVO Resolved Rate +4.4 个百分点，SWE-Milestone Score +17.8 个百分点。"
-        ],
-        "en": [
-          "MemTrace studies how long-horizon coding agents can recover memory after a context refresh while keeping it consistent with the current code state. Immutable **memory traces and a memory trace graph** preserve execution history; validation against the current repository state checks that recovered evidence is still valid.",
-          "With the same backbone and harness, the paper reports gains under Codex CLI on three long-horizon coding benchmarks: **+21.2 percentage points** in DeepSWE pass@1, +4.4 points in SWE-EVO Resolved Rate, and +17.8 points in SWE-Milestone Score."
-        ]
-      },
-      "badge": {
-        "zh": "arXiv",
-        "en": "arXiv"
-      }
-    },
-    {
       "id": "dial",
       "title": "Dial: A Knowledge-Grounded Dialect-Specific NL2SQL System",
       "venue": "PVLDB 2026",
@@ -111,6 +64,53 @@
       "badge": {
         "zh": "VLDB 2026",
         "en": "VLDB 2026"
+      }
+    },
+    {
+      "id": "memtrace",
+      "title": "MemTrace: State-Consistent Memory for Long-Horizon Coding Agents",
+      "venue": "arXiv",
+      "status": {
+        "zh": "",
+        "en": ""
+      },
+      "dates": "2026.10",
+      "start": "2026-10",
+      "end": "2026-10",
+      "authors": [
+        "Hongming Xu",
+        "Le Zhou",
+        "ZhongHe Jin",
+        "Xiang Zhang",
+        "Bo Tang",
+        "Zhiyu Li",
+        "Xuanhe Zhou",
+        "Juncheng Zhang"
+      ],
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2610.04838"
+        },
+        {
+          "label": "Code",
+          "url": "https://github.com/Homy-Xu/MemTrace"
+        }
+      ],
+      "overview": "assets/images/papers/memtrace-overview.png",
+      "description": {
+        "zh": [
+          "MemTrace 研究长程 Coding Agent 在上下文刷新后如何恢复记忆，同时保持记忆与当前代码状态一致。它用不可变的 **Memory Traces 和 Memory Trace Graph** 保留执行历史，再根据当前仓库状态校验历史证据，避免恢复已经失效的信息。",
+          "在相同 backbone 和 harness 下，论文报告 Codex CLI 在三个长程编码基准上的提升：DeepSWE pass@1 **+21.2 个百分点**，SWE-EVO Resolved Rate +4.4 个百分点，SWE-Milestone Score +17.8 个百分点。"
+        ],
+        "en": [
+          "MemTrace studies how long-horizon coding agents can recover memory after a context refresh while keeping it consistent with the current code state. Immutable **memory traces and a memory trace graph** preserve execution history; validation against the current repository state checks that recovered evidence is still valid.",
+          "With the same backbone and harness, the paper reports gains under Codex CLI on three long-horizon coding benchmarks: **+21.2 percentage points** in DeepSWE pass@1, +4.4 points in SWE-EVO Resolved Rate, and +17.8 points in SWE-Milestone Score."
+        ]
+      },
+      "badge": {
+        "zh": "arXiv",
+        "en": "arXiv"
       }
     }
   ],
