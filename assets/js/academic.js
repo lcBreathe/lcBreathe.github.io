@@ -19,6 +19,8 @@
     document.title = translations[language()].title;
     languageButton.querySelector('.language-text').textContent = translations[language()].toggle;
     languageButton.setAttribute('aria-label', translations[language()].label);
+    var accountButton = document.querySelector('.copy-account');
+    if (accountButton) accountButton.setAttribute('aria-label', language() === 'en' ? 'Copy Xiaohongshu ID' : '复制小红书号');
     document.querySelector('meta[name="description"]').content = language() === 'en' ? 'Xiang Zhang, master\'s student in Computer Science at Shanghai Jiao Tong University. Research in LLM Agents, Agentic Memory, and Data-Centric AI.' : '张翔，上海交通大学计算机专业硕士研究生。研究兴趣：LLM Agents、Agentic Memory、Data-Centric AI。';
     try { localStorage.setItem('academic-language', language()); } catch (_) {}
     if (updateURL) {
@@ -32,6 +34,58 @@
   }
   setLanguage(selected === 'en' ? 'en' : 'zh', false);
   languageButton.addEventListener('click', function () { setLanguage(language() === 'en' ? 'zh' : 'en', true); });
+  // Shorten only when needed, keeping the owner and the original author order.
+  function fitAuthors(element) {
+    var names = JSON.parse(element.getAttribute('data-authors'));
+    function render(indices) {
+      element.replaceChildren();
+      var previous = -1;
+      indices.slice().sort(function (a, b) { return a - b; }).forEach(function (index) {
+        if (previous >= 0) element.appendChild(document.createTextNode(', '));
+        if (index > previous + 1) element.appendChild(document.createTextNode('…, '));
+        var name = document.createElement(names[index] === 'Xiang Zhang' ? 'strong' : 'span');
+        name.textContent = names[index]; element.appendChild(name); previous = index;
+      });
+      if (previous < names.length - 1) element.appendChild(document.createTextNode(', …'));
+    }
+    var all = names.map(function (_, index) { return index; });
+    render(all);
+    if (element.scrollWidth <= element.clientWidth) return;
+    var owner = names.indexOf('Xiang Zhang');
+    var selected = [owner >= 0 ? owner : 0];
+    var priorities = [0, names.length - 1, 1, names.length - 2].concat(all);
+    priorities.forEach(function (index) {
+      if (index < 0 || index >= names.length || selected.indexOf(index) >= 0) return;
+      render(selected.concat(index));
+      if (element.scrollWidth <= element.clientWidth) selected.push(index);
+    });
+    render(selected);
+  }
+  var authorRows = Array.from(document.querySelectorAll('[data-authors]'));
+  function fitAllAuthors() { authorRows.forEach(fitAuthors); }
+  fitAllAuthors();
+  if ('ResizeObserver' in window) {
+    var authorObserver = new ResizeObserver(fitAllAuthors);
+    authorRows.forEach(function (row) { authorObserver.observe(row); });
+  } else window.addEventListener('resize', fitAllAuthors);
+  if (document.fonts) document.fonts.ready.then(fitAllAuthors);
+  var copyAccount = document.querySelector('.copy-account');
+  if (copyAccount) {
+    copyAccount.hidden = false;
+    copyAccount.addEventListener('click', function () {
+      var id = copyAccount.getAttribute('data-copy');
+      var status = document.querySelector('.copy-status');
+      function show(message) {
+        status.textContent = message;
+        clearTimeout(copyAccount.statusTimer);
+        copyAccount.statusTimer = setTimeout(function () { status.textContent = ''; }, 4000);
+      }
+      if (!navigator.clipboard) { show(id); return; }
+      navigator.clipboard.writeText(id).then(function () {
+        show(language() === 'en' ? 'ID copied' : '号码已复制');
+      }).catch(function () { show(id); });
+    });
+  }
   if ('IntersectionObserver' in window) {
     var links = Array.from(document.querySelectorAll('.nav a'));
     var sections = links.map(function (link) { return document.querySelector(link.getAttribute('href')); }).filter(Boolean);

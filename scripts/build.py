@@ -28,14 +28,25 @@ def paragraphs(value):
 
 
 def icon(name):
+    if name == 'xiaohongshu':
+        return '<span class="icon icon-xiaohongshu" aria-hidden="true">红</span>'
+    if name == 'linkedin':
+        return '<svg class="icon icon-linkedin" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect width="24" height="24" rx="3" fill="#0a66c2"/><circle cx="5.5" cy="6" r="1.5" fill="white"/><path fill="white" d="M4 9h3v11H4zM10 9h3v1.5c1-2 7-3 7 3V20h-3v-6c0-3-4-3-4 0v6h-3z"/></svg>'
+    if name == 'huggingface':
+        return '<span class="icon icon-huggingface" aria-hidden="true">🤗</span>'
+    if name == 'orcid':
+        return '<svg class="icon icon-orcid" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="12" fill="#a6ce39"/><text x="4" y="17" fill="white" font-family="Arial,sans-serif" font-size="15">iD</text></svg>'
     paths = {
         'user': '<circle cx="12" cy="8" r="3"/><path d="M5 21v-3a7 7 0 0 1 14 0v3"/>',
         'paper': '<path d="M14 2H5v20h14V7zM14 2v5h5M8 12h8M8 16h8"/>',
+        'review': '<path d="M12 5C8 2 4 3 2 4v16c3-2 7-1 10 1 3-2 7-3 10-1V4c-2-1-6-2-10 1zM12 5v16"/>',
+        'copy': '<rect x="8" y="8" width="13" height="14" rx="2"/><path d="M16 8V2H2v14h6"/>',
         'project': '<rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V3h8v4M3 12h18M10 12v3h4v-3"/>',
         'education': '<path d="m2 9 10-5 10 5-10 5zM6 11v6c4 3 8 3 12 0v-6M22 9v8"/>',
         'location': '<path d="M19 10c0 5-7 12-7 12S5 15 5 10a7 7 0 0 1 14 0z"/><circle cx="12" cy="10" r="2"/>',
         'mail': '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7 10-7"/>',
         'code': '<path d="m8 5-7 7 7 7M16 5l7 7-7 7M14 3l-4 18"/>',
+        'github': '<path fill="currentColor" stroke="none" d="M12 .8a11.3 11.3 0 0 0-3.6 22c.6.1.8-.2.8-.5v-2.1c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.6-1.3-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.7 2.6 1.2 3.3.9.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.6 0-1.2.4-2.2 1.2-3-.1-.3-.5-1.5.1-3 0 0 1-.3 3.1 1.2a10.8 10.8 0 0 1 5.7 0c2.2-1.5 3.1-1.2 3.1-1.2.6 1.5.2 2.7.1 3 .8.8 1.2 1.8 1.2 3 0 4.3-2.7 5.3-5.3 5.6.4.4.8 1.1.8 2.2v3c0 .3.2.6.8.5A11.3 11.3 0 0 0 12 .8z"/>',
         'link': '<path d="m10 13 4-4M8 15l-2 2a4 4 0 0 1-6-6l4-4a4 4 0 0 1 6 0M16 9l2-2a4 4 0 0 1 6 6l-4 4a4 4 0 0 1-6 0"/>',
         'lab': '<path d="M9 2h6M10 2v7L4 20q-1 2 2 2h12q3 0 2-2L14 9V2M7 15h10"/>',
         'language': '<path d="M2 4h12M8 2v2M5 4c1 6 4 9 8 11M11 4c-1 5-4 9-9 12M14 22l4-11 4 11M15 19h6"/>',
@@ -64,7 +75,9 @@ def render(d):
 <p class="profile-school">{tr('上海交通大学', 'Shanghai Jiao Tong University')}</p>
 <ul class="profile-links"><li>{icon('location')}{tr('中国 · 上海', 'Shanghai, China')}</li>
 <li><a href="mailto:{e(d['email'])}">{icon('mail')}{e(d['email'])}</a></li>
-<li><a href="https://github.com/{e(d['github'])}" target="_blank" rel="noopener noreferrer">{icon('code')}GitHub</a></li>
+<li><a href="https://github.com/{e(d['github'])}" target="_blank" rel="noopener noreferrer">{icon('github')}GitHub</a></li>
+{''.join(f'<li><a href="{e(profile["url"])}" target="_blank" rel="noopener noreferrer">{icon(profile["icon"])}{e(profile["label"])}</a></li>' for profile in d.get('profiles', []))}
+<li class="xiaohongshu-row"><a href="{e(d['xiaohongshu']['search_url'])}" target="_blank" rel="noopener noreferrer" title="Xiaohongshu ID: {e(d['xiaohongshu']['id'])}">{icon('xiaohongshu')}{tr('小红书', 'Xiaohongshu')}</a><button class="copy-account" type="button" data-copy="{e(d['xiaohongshu']['id'])}" aria-label="复制小红书号" title="{e(d['xiaohongshu']['id'])}" hidden>{icon('copy')}</button><span class="copy-status" aria-live="polite"></span></li>
 <li><a href="{e(d['education'][0]['lab']['url'])}" target="_blank" rel="noopener noreferrer">{icon('lab')}Theseus Labs</a></li></ul></div>
 </aside>
 <main id="main"><section id="about" class="about-section"><h2>{icon('user')}{tr('关于我', 'About me')}</h2>
@@ -74,19 +87,21 @@ def render(d):
         authors = ''
         if paper.get('authors'):
             author_names = ', '.join('<strong>Xiang Zhang</strong>' if x == 'Xiang Zhang' else e(x) for x in paper['authors'])
-            authors = f'<p class="paper-authors">{author_names}</p>'
-        links = ''.join(f'<a href="{e(link["url"])}" target="_blank" rel="noopener noreferrer">{icon("code" if link["label"] == "Code" else "paper")}{e(link["label"])}</a>' for link in paper.get('links', []))
+            full_authors = e(', '.join(paper['authors']))
+            authors = f'<p class="paper-authors" title="{full_authors}" aria-label="{full_authors}" data-authors="{e(json.dumps(paper["authors"]))}">{author_names}</p>'
+        links = ''.join(f'<a href="{e(link["url"])}" target="_blank" rel="noopener noreferrer">{icon("github" if link["label"] == "Code" else "paper")}{e(link["label"])}</a>' for link in paper.get('links', []))
         title = e(paper['title'])
         if paper.get('links'):
             title = f'<a href="{e(paper["links"][0]["url"])}" target="_blank" rel="noopener noreferrer">{title}</a>'
         parts.append(f'''<article class="research-item" id="{e(paper['id'])}">
 <div class="paper-top">
-<a class="paper-figure" href="{e(paper['overview'])}" target="_blank" rel="noopener noreferrer"><img src="{e(paper['overview'])}" alt="{e(paper['title'])} — overview" loading="lazy"></a>
+<a class="paper-figure" href="{e(paper['overview'])}" target="_blank" rel="noopener noreferrer"><span class="paper-badge">{tr(paper['badge'])}</span><img src="{e(paper['overview'])}" alt="{e(paper['title'])} — overview" loading="lazy"></a>
 <div class="paper-content">
 <h3 class="paper-title">{title}</h3>{authors}
 <p class="paper-meta"><span class="venue">{e(paper['venue'])}</span><span class="status">{tr(paper['status'])}</span><span class="date">{e(paper['dates'])}</span></p>
+{paragraphs(paper['description'])}
 {f'<div class="paper-links">{links}</div>' if links else ''}
-</div></div>{paragraphs(paper['description'])}</article>''')
+</div></div></article>''')
     parts += ['</section>', heading('projects', '02', '项目经历', 'Projects')]
     for project in d['projects']:
         parts.append(f'''<article class="project-item"><div class="item-top"><h3 class="project-title">{tr(project['title'])}</h3><span class="date">{e(project['dates'])}</span></div>

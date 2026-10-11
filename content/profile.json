@@ -43,10 +43,6 @@
           "url": "https://arxiv.org/abs/2610.04838"
         },
         {
-          "label": "PDF",
-          "url": "https://arxiv.org/pdf/2610.04838"
-        },
-        {
           "label": "Code",
           "url": "https://github.com/Homy-Xu/MemTrace"
         }
@@ -61,6 +57,10 @@
           "MemTrace studies how long-horizon coding agents can recover memory after a context refresh while keeping it consistent with the current code state. Immutable **memory traces and a memory trace graph** preserve execution history; validation against the current repository state checks that recovered evidence is still valid.",
           "With the same backbone and harness, the paper reports gains under Codex CLI on three long-horizon coding benchmarks: **+21.2 percentage points** in DeepSWE pass@1, +4.4 points in SWE-EVO Resolved Rate, and +17.8 points in SWE-Milestone Score."
         ]
+      },
+      "badge": {
+        "zh": "ICLR · 在审",
+        "en": "ICLR · Under review"
       }
     },
     {
@@ -94,10 +94,6 @@
           "url": "https://arxiv.org/abs/2603.07449"
         },
         {
-          "label": "PDF",
-          "url": "https://arxiv.org/pdf/2603.07449"
-        },
-        {
           "label": "Code",
           "url": "https://github.com/weAIDB/Dial"
         }
@@ -111,6 +107,10 @@
           "Dial combines planning, retrieval, generation, execution feedback, and semantic validation to generate SQL across database dialects **without model fine-tuning**, addressing knowledge hallucinations, dialect interference, and non-executable outputs. NL-LQP decomposes a natural-language request into DAG macro-operators with dependencies. The hierarchical HINT-KB organizes function knowledge and implicit execution constraints from official documentation to support intent-oriented structured RAG.",
           "The system retrieves constraints and makes targeted repairs using actual execution feedback, checks logical plans for semantic drift, and writes validated experience back to the knowledge base. We built DS-NL2SQL with **2,218 test cases across 6 databases**. Compared with the strongest standard baseline, Dial improves average execution accuracy by **10.25%** and dialect feature coverage by **15.77%**."
         ]
+      },
+      "badge": {
+        "zh": "VLDB 2026",
+        "en": "VLDB 2026"
       }
     }
   ],
@@ -212,5 +212,36 @@
       },
       "logo": "assets/images/schools/tongji.png"
     }
-  ]
+  ],
+  "profiles": [
+    {
+      "label": "Google Scholar",
+      "url": "https://scholar.google.com/citations?hl=en&user=aNuraj4AAAAJ",
+      "icon": "education"
+    },
+    {
+      "label": "OpenReview",
+      "url": "https://openreview.net/profile?id=%7EXiang_Zhang65",
+      "icon": "review"
+    },
+    {
+      "label": "Hugging Face",
+      "url": "https://huggingface.co/zhangxiang666",
+      "icon": "huggingface"
+    },
+    {
+      "label": "ORCID",
+      "url": "https://orcid.org/0009-0009-5441-8529",
+      "icon": "orcid"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/%E7%BF%94-%E5%BC%A0-287545436/",
+      "icon": "linkedin"
+    }
+  ],
+  "xiaohongshu": {
+    "id": "2625439295",
+    "search_url": "https://www.xiaohongshu.com/search_result?keyword=2625439295&type=51"
+  }
 }
