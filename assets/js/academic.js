@@ -22,17 +22,17 @@
     var accountButton = document.querySelector('.copy-account');
     if (accountButton) accountButton.setAttribute('aria-label', language() === 'en' ? 'Copy Xiaohongshu ID' : '复制小红书号');
     document.querySelector('meta[name="description"]').content = language() === 'en' ? 'Xiang Zhang, master\'s student in Computer Science at Shanghai Jiao Tong University. Research in LLM Agents, Agentic Memory, and Data-Centric AI.' : '张翔，上海交通大学计算机专业硕士研究生。研究兴趣：LLM Agents、Agentic Memory、Data-Centric AI。';
-    try { localStorage.setItem('academic-language', language()); } catch (_) {}
     if (updateURL) {
+      try { localStorage.setItem('academic-language-v2', language()); } catch (_) {}
       try { var url = new URL(location.href); url.searchParams.set('lang', language()); history.replaceState(null, '', url); } catch (_) {}
     }
     updateVisitor();
   }
   var selected = new URLSearchParams(location.search).get('lang');
   if (selected !== 'en' && selected !== 'zh') {
-    try { selected = localStorage.getItem('academic-language'); } catch (_) {}
+    try { selected = localStorage.getItem('academic-language-v2'); } catch (_) {}
   }
-  setLanguage(selected === 'en' ? 'en' : 'zh', false);
+  setLanguage(selected === 'zh' ? 'zh' : 'en', false);
   languageButton.addEventListener('click', function () { setLanguage(language() === 'en' ? 'zh' : 'en', true); });
   // Shorten only when needed, keeping the owner and the original author order.
   function fitAuthors(element) {

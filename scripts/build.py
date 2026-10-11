@@ -55,17 +55,16 @@ def icon(name):
 
 
 def heading(id_, number, zh, en):
-    symbol = {'research': 'paper', 'projects': 'project', 'education': 'education'}[id_]
-    return f'<section id="{id_}" class="content-section"><h2>{icon(symbol)}{tr(zh, en)}</h2>'
+    return f'<section id="{id_}" class="content-section"><h2>{tr(zh, en)}</h2>'
 
 
 def render(d):
-    nav = [('about', '关于我', 'About'), ('research', '研究与论文', 'Publications'), ('projects', '项目经历', 'Projects'), ('education', '教育背景', 'Education')]
+    nav = [('about', '关于我', 'About'), ('research', '研究与论文', 'Publications'), ('projects', '项目经历', 'Projects'), ('education', '个人经历', 'Experience')]
     parts = [f'''<a class="skip-link" href="#main">{tr('跳至正文', 'Skip to content')}</a>
 <div class="page">
 <header class="masthead"><a class="site-name" href="#about">Xiang Zhang</a>
 <nav class="nav" aria-label="Main navigation">{''.join(f'<a href="#{id_}">{tr(zh, en)}</a>' for id_, zh, en in nav)}</nav>
-<button id="language-toggle" class="language-button" type="button" aria-label="Switch to English">{icon('language')}<span class="language-text">English</span></button>
+<button id="language-toggle" class="language-button" type="button" aria-label="切换到中文">{icon('language')}<span class="language-text">中文</span></button>
 </header>
 <div class="site-grid">
 <aside class="profile-sidebar" aria-label="Profile">
@@ -80,7 +79,7 @@ def render(d):
 <li class="xiaohongshu-row"><a href="{e(d['xiaohongshu']['search_url'])}" target="_blank" rel="noopener noreferrer" title="Xiaohongshu ID: {e(d['xiaohongshu']['id'])}">{icon('xiaohongshu')}{tr('小红书', 'Xiaohongshu')}</a><button class="copy-account" type="button" data-copy="{e(d['xiaohongshu']['id'])}" aria-label="复制小红书号" title="{e(d['xiaohongshu']['id'])}" hidden>{icon('copy')}</button><span class="copy-status" aria-live="polite"></span></li>
 <li><a href="{e(d['education'][0]['lab']['url'])}" target="_blank" rel="noopener noreferrer">{icon('lab')}Theseus Labs</a></li></ul></div>
 </aside>
-<main id="main"><section id="about" class="about-section"><h2>{icon('user')}{tr('关于我', 'About me')}</h2>
+<main id="main"><section id="about" class="about-section"><h2>{tr('关于我', 'About me')}</h2>
 <p class="intro">{tr(d['intro'])}</p>
 </section>''', heading('research', '01', '研究与论文', 'Research & Publications')]
     for paper in d['research']:
@@ -107,7 +106,7 @@ def render(d):
         parts.append(f'''<article class="project-item"><div class="item-top"><h3 class="project-title">{tr(project['title'])}</h3><span class="date">{e(project['dates'])}</span></div>
 <p class="project-subtitle">{tr(project['subtitle'])}</p>
 {paragraphs(project['details'])}</article>''')
-    parts += ['</section>', heading('education', '03', '教育背景', 'Education')]
+    parts += ['</section>', heading('education', '03', '个人经历', 'Experience')]
     for edu in d['education']:
         affiliation = ''
         if edu.get('advisor'):

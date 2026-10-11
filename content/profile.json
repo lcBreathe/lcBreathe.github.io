@@ -7,8 +7,8 @@
   "email": "zhangxxx@sjtu.edu.cn",
   "github": "lcBreathe",
   "intro": {
-    "zh": "我目前在上海交通大学攻读计算机专业硕士，预计于 2028 年 3 月毕业，本科就读于同济大学土木信息工程专业。我的研究兴趣是 **LLM Agents、Agentic Memory 和 Data-Centric AI**。",
-    "en": "I am a master’s student in Computer Science at Shanghai Jiao Tong University, expecting to graduate in March 2028. I received my B.Eng. in Civil and Information Engineering from Tongji University. My research interests are **LLM Agents, Agentic Memory, and Data-Centric AI**."
+    "zh": "我目前在上海交通大学攻读计算机专业硕士，预计于 2028 年 3 月毕业，本科就读于同济大学土木工程专业。我的研究兴趣是 **LLM Agents、Agentic Memory 和 Data-Centric AI**。",
+    "en": "I am a master’s student in Computer Science at Shanghai Jiao Tong University, expecting to graduate in March 2028. I received my B.Eng. in Civil Engineering from Tongji University. My research interests are **LLM Agents, Agentic Memory, and Data-Centric AI**."
   },
   "interests": [
     "LLM Agents",
@@ -202,8 +202,8 @@
         "en": "Tongji University"
       },
       "degree": {
-        "zh": "土木信息工程 · 工学学士",
-        "en": "Civil and Information Engineering · B.Eng."
+        "zh": "土木工程 · 工学学士",
+        "en": "Civil Engineering · B.Eng."
       },
       "dates": "2021.09 — 2025.06",
       "note": {

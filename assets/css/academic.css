@@ -50,7 +50,7 @@ h3{font-size:15px;font-weight:600;line-height:1.6;margin:0 0 4px}
 .description{font-size:14px;line-height:1.9;color:#515151}
 .description p{margin:9px 0 0}.paper-content .description{font-size:13px;line-height:1.85}.paper-content .description p:first-child{margin-top:8px}
 .description strong,.intro strong{font-weight:600;color:var(--ink)}
-.project-item{margin-bottom:23px}
+.project-item{margin-bottom:29px}.project-item + .project-item{border-top:1px solid #d9dfe5;padding-top:27px}.project-title{font-size:17px;font-weight:650;color:#263a50}.project-item .item-top{margin-bottom:6px}
 .project-item:last-child{margin-bottom:0}
 .item-top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .project-subtitle{font-size:14px;margin:3px 0 0;color:#555}
