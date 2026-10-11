@@ -2,12 +2,12 @@
 
 基于 [Academic Pages](https://github.com/academicpages/academicpages.github.io) 官方 Jekyll 模板，定制响应式学术主页。
 
-参考 [Yi Duan 的学术主页](https://duanyi516.github.io/)：左侧为证件照与个人信息，右侧为简介、带 overview 图的论文列表、项目经历、教育背景与荣誉。手机上自然排列为单栏；研究和项目细节可展开查看。
+参考 [Yi Duan 的学术主页](https://duanyi516.github.io/)：左侧为证件照与个人信息，右侧为简介、带 overview 图的论文列表、项目经历、教育背景。手机上自然排列为单栏；研究与项目内容直接展示，用少量加粗标出关键方法和实验结果。
 
 主页：https://lcbreathe.github.io/  
 仓库：https://github.com/lcBreathe/lcBreathe.github.io
 
-支持一键中英文切换、记住语言偏好、`?lang=en` / `?lang=zh` 分享链接、研究细节展开，以及页脚的访问人数和内容更新时间。
+支持一键中英文切换、记住语言偏好、`?lang=en` / `?lang=zh` 分享链接、以及页脚的访问人数和内容更新时间。
 
 ## 修改内容
 
@@ -36,7 +36,9 @@ GitHub Actions 从履历、样式、布局或构建脚本 最近一次 Git 提�
 
 ## 内容来源
 
-履历依据用户提供的 `resume(9).pdf`，英文为对应翻译。公开页面和仓库不包含手机号、微信号，不提供简历 PDF 或简历下载。AutoDialect 按用户要求暂不展示。Dial 的 PVLDB 2026 与实验数据按简历保留，作者、论文及代码链接依据 [arXiv:2603.07449](https://arxiv.org/abs/2603.07449)；没有虚构导师信息。MemTrace 按用户补充标注为 ICLR 在审；标题、完整作者列表和指标依据 [arXiv:2610.04838](https://arxiv.org/abs/2610.04838)，附论文、PDF 与官方代码链接；pp 表示百分点。
+中文研究介绍按 `humanizer-zh` 技能的事实保留与自然表达要求润色；仅调整行文与重点，不补写研究贡献。
+
+履历依据用户提供的 `resume(9).pdf`，英文为对应翻译。公开页面和仓库不包含手机号、微信号，不提供简历 PDF 或简历下载。AutoDialect 按用户要求暂不展示；独立荣誉栏已移除，同济优秀学生和优秀毕业生保留在教育背景中。Dial 的 PVLDB 2026 与实验数据按简历保留，作者、论文及代码链接依据 [arXiv:2603.07449](https://arxiv.org/abs/2603.07449)；没有虚构导师信息。MemTrace 按用户补充标注为 ICLR 在审；标题、完整作者列表和指标依据 [arXiv:2610.04838](https://arxiv.org/abs/2610.04838)，附论文、PDF 与官方代码链接；pp 表示百分点。
 
 头像为用户提供的证件照，保留原图并用 CSS 显示为圆形。两篇论文的 overview 使用论文原图，点击可查看完整大小：
 

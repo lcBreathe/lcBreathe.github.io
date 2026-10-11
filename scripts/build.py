@@ -13,27 +13,48 @@ ROOT = Path(__file__).resolve().parents[1]
 e = html.escape
 
 
+def emphasized(value):
+    return re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', e(value))
+
+
 def tr(value, en=None):
     if isinstance(value, str):
         value = {"zh": value, "en": en}
-    return ''.join(f'<span class="i18n" data-lang="{lang}" lang="{("zh-CN" if lang == "zh" else "en")}">{e(value[lang])}</span>' for lang in ("zh", "en"))
+    return ''.join(f'<span class="i18n" data-lang="{lang}" lang="{("zh-CN" if lang == "zh" else "en")}">{emphasized(value[lang])}</span>' for lang in ("zh", "en"))
 
 
-def bullet_lists(value):
-    return ''.join(f'<ul class="detail-list i18n" data-lang="{lang}" lang="{("zh-CN" if lang == "zh" else "en")}">' + ''.join(f'<li>{e(text)}</li>' for text in value[lang]) + '</ul>' for lang in ("zh", "en"))
+def paragraphs(value):
+    return ''.join(f'<div class="description i18n" data-lang="{lang}" lang="{("zh-CN" if lang == "zh" else "en")}">' + ''.join(f'<p>{emphasized(text)}</p>' for text in value[lang]) + '</div>' for lang in ("zh", "en"))
+
+
+def icon(name):
+    paths = {
+        'user': '<circle cx="12" cy="8" r="3"/><path d="M5 21v-3a7 7 0 0 1 14 0v3"/>',
+        'paper': '<path d="M14 2H5v20h14V7zM14 2v5h5M8 12h8M8 16h8"/>',
+        'project': '<rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V3h8v4M3 12h18M10 12v3h4v-3"/>',
+        'education': '<path d="m2 9 10-5 10 5-10 5zM6 11v6c4 3 8 3 12 0v-6M22 9v8"/>',
+        'location': '<path d="M19 10c0 5-7 12-7 12S5 15 5 10a7 7 0 0 1 14 0z"/><circle cx="12" cy="10" r="2"/>',
+        'mail': '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7 10-7"/>',
+        'code': '<path d="m8 5-7 7 7 7M16 5l7 7-7 7M14 3l-4 18"/>',
+        'link': '<path d="m10 13 4-4M8 15l-2 2a4 4 0 0 1-6-6l4-4a4 4 0 0 1 6 0M16 9l2-2a4 4 0 0 1 6 6l-4 4a4 4 0 0 1-6 0"/>',
+        'lab': '<path d="M9 2h6M10 2v7L4 20q-1 2 2 2h12q3 0 2-2L14 9V2M7 15h10"/>',
+        'language': '<path d="M2 4h12M8 2v2M5 4c1 6 4 9 8 11M11 4c-1 5-4 9-9 12M14 22l4-11 4 11M15 19h6"/>',
+    }
+    return f'<svg class="icon icon-{name}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">{paths[name]}</svg>'
 
 
 def heading(id_, number, zh, en):
-    return f'<section id="{id_}" class="content-section"><h2>{tr(zh, en)}</h2>'
+    symbol = {'research': 'paper', 'projects': 'project', 'education': 'education'}[id_]
+    return f'<section id="{id_}" class="content-section"><h2>{icon(symbol)}{tr(zh, en)}</h2>'
 
 
 def render(d):
-    nav = [('about', '关于我', 'About'), ('research', '研究与论文', 'Research'), ('projects', '项目经历', 'Projects'), ('education', '教育背景', 'Education'), ('awards', '荣誉奖项', 'Awards')]
+    nav = [('about', '关于我', 'About'), ('research', '研究与论文', 'Publications'), ('projects', '项目经历', 'Projects'), ('education', '教育背景', 'Education')]
     parts = [f'''<a class="skip-link" href="#main">{tr('跳至正文', 'Skip to content')}</a>
 <div class="page">
 <header class="masthead"><a class="site-name" href="#about">Xiang Zhang</a>
 <nav class="nav" aria-label="Main navigation">{''.join(f'<a href="#{id_}">{tr(zh, en)}</a>' for id_, zh, en in nav)}</nav>
-<button id="language-toggle" class="language-button" type="button" aria-label="Switch to English"><span class="language-text">English</span></button>
+<button id="language-toggle" class="language-button" type="button" aria-label="Switch to English">{icon('language')}<span class="language-text">English</span></button>
 </header>
 <div class="site-grid">
 <aside class="profile-sidebar" aria-label="Profile">
@@ -41,11 +62,12 @@ def render(d):
 <div class="profile-info"><h1>{tr(d['name'])}</h1><p class="other-name">{tr('Xiang Zhang', '张翔')}</p>
 <p class="profile-role">{tr('计算机专业硕士研究生', "Master’s student in Computer Science")}</p>
 <p class="profile-school">{tr('上海交通大学', 'Shanghai Jiao Tong University')}</p>
-<ul class="profile-links"><li>{tr('中国 · 上海', 'Shanghai, China')}</li>
-<li><a href="mailto:{e(d['email'])}">{e(d['email'])}</a></li>
-<li><a href="https://github.com/{e(d['github'])}" target="_blank" rel="noopener noreferrer">GitHub · {e(d['github'])}</a></li></ul></div>
+<ul class="profile-links"><li>{icon('location')}{tr('中国 · 上海', 'Shanghai, China')}</li>
+<li><a href="mailto:{e(d['email'])}">{icon('mail')}{e(d['email'])}</a></li>
+<li><a href="https://github.com/{e(d['github'])}" target="_blank" rel="noopener noreferrer">{icon('code')}GitHub</a></li>
+<li><a href="{e(d['education'][0]['lab']['url'])}" target="_blank" rel="noopener noreferrer">{icon('lab')}Theseus Labs</a></li></ul></div>
 </aside>
-<main id="main"><section id="about" class="about-section"><h2>{tr('关于我', 'About me')}</h2>
+<main id="main"><section id="about" class="about-section"><h2>{icon('user')}{tr('关于我', 'About me')}</h2>
 <p class="intro">{tr(d['intro'])}</p>
 </section>''', heading('research', '01', '研究与论文', 'Research & Publications')]
     for paper in d['research']:
@@ -53,32 +75,30 @@ def render(d):
         if paper.get('authors'):
             author_names = ', '.join('<strong>Xiang Zhang</strong>' if x == 'Xiang Zhang' else e(x) for x in paper['authors'])
             authors = f'<p class="paper-authors">{author_names}</p>'
-        links = ''.join(f'<a href="{e(link["url"])}" target="_blank" rel="noopener noreferrer">[{e(link["label"])}]</a>' for link in paper.get('links', []))
+        links = ''.join(f'<a href="{e(link["url"])}" target="_blank" rel="noopener noreferrer">{icon("code" if link["label"] == "Code" else "paper")}{e(link["label"])}</a>' for link in paper.get('links', []))
         title = e(paper['title'])
         if paper.get('links'):
             title = f'<a href="{e(paper["links"][0]["url"])}" target="_blank" rel="noopener noreferrer">{title}</a>'
-        results = ''
-        if paper['id'] == 'memtrace':
-            values = ' · '.join(f'{tr(metric["label"])} {e(metric["value"])}' for metric in paper['metrics'])
-            results = f'<p class="paper-results">{values}</p>'
         parts.append(f'''<article class="research-item" id="{e(paper['id'])}">
+<div class="paper-top">
 <a class="paper-figure" href="{e(paper['overview'])}" target="_blank" rel="noopener noreferrer"><img src="{e(paper['overview'])}" alt="{e(paper['title'])} — overview" loading="lazy"></a>
 <div class="paper-content">
 <h3 class="paper-title">{title}</h3>{authors}
 <p class="paper-meta"><span class="venue">{e(paper['venue'])}</span><span class="status">{tr(paper['status'])}</span><span class="date">{e(paper['dates'])}</span></p>
-<p class="paper-summary">{tr(paper['summary'])}</p>
 {f'<div class="paper-links">{links}</div>' if links else ''}
-<details class="research-details"><summary>{tr('研究详情', 'Details')}</summary>{bullet_lists(paper['details'])}{results}</details>
-</div></article>''')
+</div></div>{paragraphs(paper['description'])}</article>''')
     parts += ['</section>', heading('projects', '02', '项目经历', 'Projects')]
     for project in d['projects']:
         parts.append(f'''<article class="project-item"><div class="item-top"><h3 class="project-title">{tr(project['title'])}</h3><span class="date">{e(project['dates'])}</span></div>
 <p class="project-subtitle">{tr(project['subtitle'])}</p>
-<details class="project-details"><summary>{tr('项目详情', 'Details')}</summary>{bullet_lists(project['details'])}</details></article>''')
+{paragraphs(project['details'])}</article>''')
     parts += ['</section>', heading('education', '03', '教育背景', 'Education')]
     for edu in d['education']:
-        parts.append(f'''<article class="education-item"><img class="school-logo" src="{e(edu['logo'])}" alt="{e(edu['school']['en'])}" width="72" height="72" loading="lazy"><div class="education-content"><div class="item-top"><h3 class="education-title">{tr(edu['school'])}</h3><span class="date">{e(edu['dates'])}</span></div><p class="education-degree">{tr(edu['degree'])}</p><p class="education-note">{tr(edu['note'])}</p></div></article>''')
-    parts += ['</section>', heading('awards', '04', '荣誉奖项', 'Honors & Awards'), '<ul class="award-list">' + ''.join(f'<li>{tr(award)}</li>' for award in d['awards']) + '</ul></section>']
+        affiliation = ''
+        if edu.get('advisor'):
+            affiliation = f'<p class="education-affiliation">{tr("导师", "Advisor")}: <a href="{e(edu["advisor"]["url"])}" target="_blank" rel="noopener noreferrer">{tr(edu["advisor"]["name"])}</a><span class="separator" aria-hidden="true"> · </span><a href="{e(edu["lab"]["url"])}" target="_blank" rel="noopener noreferrer">{icon("lab")}{e(edu["lab"]["name"])}</a></p>'
+        parts.append(f'''<article class="education-item"><img class="school-logo" src="{e(edu['logo'])}" alt="{e(edu['school']['en'])}" width="72" height="72" loading="lazy"><div class="education-content"><div class="item-top"><h3 class="education-title">{tr(edu['school'])}</h3><span class="date">{e(edu['dates'])}</span></div><p class="education-degree">{tr(edu['degree'])}</p>{affiliation}<p class="education-note">{tr(edu['note'])}</p></div></article>''')
+    parts += ['</section>']
     parts.append(f'''
 <noscript><p>{tr('启用 JavaScript 后可切换语言并显示访客统计。', 'Enable JavaScript to switch languages and display visitor statistics.')}</p></noscript>
 </main></div>
