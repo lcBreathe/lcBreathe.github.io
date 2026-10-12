@@ -34,6 +34,44 @@
   } catch (_) {}
   setLanguage('en');
   languageButton.addEventListener('click', function () { setLanguage(language() === 'en' ? 'zh' : 'en'); });
+  // Keep paper figures on this page; the native dialog handles focus and Escape.
+  var imagePreview = document.getElementById('image-preview');
+  if (imagePreview && typeof imagePreview.showModal === 'function') {
+    var previewImage = imagePreview.querySelector('.image-preview-image');
+    var previewTitle = document.getElementById('image-preview-title');
+    document.querySelectorAll('.paper-figure').forEach(function (link) {
+      link.setAttribute('aria-haspopup', 'dialog');
+      link.setAttribute('aria-controls', 'image-preview');
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+        var thumbnail = link.querySelector('img');
+        previewImage.src = link.href;
+        previewImage.alt = thumbnail.alt;
+        previewTitle.textContent = thumbnail.alt;
+        imagePreview.showModal();
+        root.classList.add('image-preview-open');
+      });
+    });
+    imagePreview.querySelector('.image-preview-close').addEventListener('click', function () {
+      imagePreview.close();
+    });
+    function outsidePreview(event) {
+      var bounds = imagePreview.getBoundingClientRect();
+      return event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom;
+    }
+    var backdropPress = false;
+    imagePreview.addEventListener('pointerdown', function (event) {
+      backdropPress = event.target === imagePreview && outsidePreview(event);
+    });
+    imagePreview.addEventListener('click', function (event) {
+      if (backdropPress && event.target === imagePreview && outsidePreview(event)) imagePreview.close();
+      backdropPress = false;
+    });
+    imagePreview.addEventListener('close', function () {
+      root.classList.remove('image-preview-open');
+      previewImage.removeAttribute('src');
+    });
+  }
   // Shorten only when needed, keeping the owner and the original author order.
   function fitAuthors(element) {
     var names = JSON.parse(element.getAttribute('data-authors'));

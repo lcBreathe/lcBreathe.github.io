@@ -94,7 +94,7 @@ def render(d):
             title = f'<a href="{e(paper["links"][0]["url"])}" target="_blank" rel="noopener noreferrer">{title}</a>'
         parts.append(f'''<article class="research-item" id="{e(paper['id'])}">
 <div class="paper-top">
-<a class="paper-figure" href="{e(paper['overview'])}" target="_blank" rel="noopener noreferrer"><span class="paper-badge">{tr(paper['badge'])}</span><img src="{e(paper['overview'])}" alt="{e(paper['title'])} — overview" loading="lazy"></a>
+<a class="paper-figure" href="{e(paper['overview'])}"><span class="paper-badge">{tr(paper['badge'])}</span><img src="{e(paper['overview'])}" alt="{e(paper['title'])} — overview" loading="lazy"></a>
 <div class="paper-content">
 <h3 class="paper-title">{title}</h3>{authors}
 <p class="paper-meta"><span class="venue">{e(paper['venue'])}</span><span class="status">{tr(paper['status'])}</span><span class="date">{e(paper['dates'])}</span></p>
@@ -125,6 +125,10 @@ def render(d):
 <footer class="site-footer"><div class="footer-inner"><span>© {d['updated'][:4]} Xiang Zhang</span>
 <div class="footer-stats"><span><span class="footer-counter-title" title="UV · Busuanzi · Estimated unique visitors">{tr('访问人数', 'Visitors')}</span> <span id="visitor-value" class="stat-value" aria-live="polite">{tr('加载中…', 'Loading…')}</span></span>
 <span>{tr('最近更新', 'Last updated')} <time class="stat-value" datetime="{e(d['updated'])}">{e(d['updated'])}</time></span></div></div></footer></div>
+<dialog id="image-preview" class="image-preview" aria-labelledby="image-preview-title">
+<div class="image-preview-header"><p id="image-preview-title"></p><button class="image-preview-close" type="button" autofocus><span aria-hidden="true">×</span> {tr('关闭', 'Close')}</button></div>
+<img class="image-preview-image" alt="">
+</dialog>
 <div class="counter-source" aria-hidden="true"><span id="busuanzi_container_site_uv"><span id="busuanzi_value_site_uv"></span></span></div>''')
     return '\n'.join(parts) + '\n'
 

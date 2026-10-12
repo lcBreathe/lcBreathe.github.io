@@ -35,6 +35,17 @@ h2{display:flex;align-items:center;gap:10px;font-size:24px;font-weight:600;margi
 .research-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:0}
 .paper-figure{display:block;position:relative;margin-top:8px;padding:7px;background:#fff;border:1px solid #eee;box-shadow:0 3px 10px #00000014}.paper-badge{position:absolute;top:10px;left:-7px;z-index:1;background:#174f91;color:#fff;padding:3px 10px;font-size:11px;line-height:1.5;font-weight:600;box-shadow:0 2px 4px #00000018}.paper-badge:after{content:"";position:absolute;left:0;bottom:-5px;border-top:5px solid #103969;border-left:6px solid transparent}
 .paper-figure img{display:block;width:100%;height:auto;object-fit:contain}
+.paper-figure[aria-haspopup="dialog"]{cursor:zoom-in}
+.image-preview-open{overflow:hidden}
+.image-preview{width:min(1200px,calc(100vw - 32px));max-width:none;max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);margin:auto;padding:16px;border:0;border-radius:8px;background:#fff;color:var(--ink);box-shadow:0 16px 64px #0004}
+.image-preview:not([open]){display:none}
+.image-preview::backdrop{background:rgb(15 23 32 / 72%)}
+.image-preview-header{display:flex;align-items:flex-start;gap:16px;margin-bottom:12px}
+.image-preview-header p{flex:1;min-width:0;margin:0;font-size:13px;line-height:1.6}
+.image-preview-close{display:inline-flex;align-items:center;justify-content:center;gap:6px;flex-shrink:0;min-height:44px;padding:0 10px;border:1px solid var(--line);border-radius:4px;background:#fafafa;color:var(--ink);font:13px var(--font);cursor:pointer}
+.image-preview-close:hover{background:#eef2f6}
+.image-preview-close>span[aria-hidden]{font-size:24px;line-height:1}
+.image-preview-image{display:block;width:100%;height:auto;max-height:calc(100vh - 180px);max-height:calc(100dvh - 180px);object-fit:contain}
 .paper-content{min-width:0}
 h3{font-size:15px;font-weight:600;line-height:1.6;margin:0 0 4px}
 .paper-title{font-size:16px;line-height:1.5;font-weight:650;margin-bottom:7px}.paper-title a{color:var(--link);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}.paper-title a:hover{color:#103969}
